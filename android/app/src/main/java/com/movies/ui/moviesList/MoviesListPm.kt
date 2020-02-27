@@ -1,6 +1,7 @@
 package com.movies.ui.moviesList
 
 import com.movies.data.command.GetMoviesListCommand
+import com.movies.navigation.Navigation
 import me.dmdev.rxpm.PresentationModel
 import me.dmdev.rxpm.bindProgress
 import me.dmdev.rxpm.command
@@ -20,7 +21,8 @@ class MoviesListPm @Inject constructor(
     override fun onCreate() {
         getMoviesListCommand.execute()
             .bindProgress(loading)
-            .subscribe()
+            .map { Navigation.MovieDetail(it[0].id) }
+            .subscribe(navigationMessages.consumer)
             .untilDestroy()
     }
 }

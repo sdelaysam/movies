@@ -1,16 +1,18 @@
 package com.movies.ui.movieDetail
 
 import android.os.Bundle
+import com.jakewharton.rxbinding3.view.visibility
 import com.movies.R
 import com.movies.util.rxpm.BaseController
+import kotlinx.android.synthetic.main.layout_movie_detail.*
+import me.dmdev.rxpm.bindTo
+import me.dmdev.rxpm.passTo
 
 class MovieDetailController(bundle: Bundle) : BaseController<MovieDetailPm>(MovieDetailPm::class, R.layout.layout_movie_detail, bundle) {
 
-    private val movieId: Long by lazy {
-        args.getLong(KEY_MOVIE_ID)
-    }
-
     override fun onBindPresentationModel(pm: MovieDetailPm) {
+        args.getLong(KEY_MOVIE_ID) passTo pm.movieId
+        pm.loading bindTo progress_bar.visibility()
     }
 
     companion object {

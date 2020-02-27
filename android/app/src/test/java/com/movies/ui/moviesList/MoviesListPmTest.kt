@@ -8,9 +8,6 @@ import tools.data.service.TestApiService
 
 class MoviesListPmTest : IntegrationTest() {
 
-    private val apiService: TestApiService
-        get() = deps.apiService
-
     private val sut: MoviesListPm
         get() = deps.moviesListPm
 
@@ -24,6 +21,7 @@ class MoviesListPmTest : IntegrationTest() {
     @Test
     fun test() {
         helper.setLifecycleTo(PresentationModel.Lifecycle.RESUMED)
+        // TODO: write pm integration tests
     }
 
 }
