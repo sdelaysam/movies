@@ -1,0 +1,26 @@
+actor = record {
+    name: string;
+    age: i8;
+    image_url: string;
+}
+
+movie = record {
+    id: i64;
+    name: string;
+    last_updated: i64;
+}
+
+movie_detail = record {
+    id: i64;
+    name: string;
+    description: string;
+    score: f32;
+    actors: list<actor>;
+}
+
+
+api = interface +c {
+    static create(): api;
+    get_movies(): list<movie>;
+    get_movie_detail(id: i64): optional<movie_detail>; 
+}
