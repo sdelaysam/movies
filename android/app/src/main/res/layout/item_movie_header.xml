@@ -1,0 +1,144 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/detail_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="@dimen/tile_width"
+        android:layout_height="@dimen/tile_height"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:background="@color/placeholder"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/backgrounds/scenic" />
+
+    <TextView
+        android:id="@+id/title_text_view"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:gravity="start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/image_view"
+        app:layout_constraintTop_toTopOf="@id/image_view"
+        tools:text="Top Gun" />
+
+    <TextView
+        android:id="@+id/description_text_view"
+        style="@style/TextAppearance.MaterialComponents.Caption"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_margin"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/title_text_view"
+        app:layout_constraintStart_toStartOf="@id/title_text_view"
+        app:layout_constraintTop_toBottomOf="@id/title_text_view"
+        tools:text="As students at the United States Navy's elite fighter weapons school compete to be best in the class, one daring young pilot learns a few things from a civilian instructor that are not taught in the classroom." />
+
+    <RatingBar
+        android:id="@+id/rating_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_margin"
+        android:numStars="1"
+        android:progressTint="@color/yellow"
+        android:secondaryProgressTint="@color/transparent"
+        android:stepSize="0.1"
+        app:layout_constraintBottom_toBottomOf="@id/image_view"
+        app:layout_constraintStart_toStartOf="@id/description_text_view"
+        tools:rating="0.25" />
+
+    <TextView
+        android:id="@+id/rating_label"
+        style="@style/TextAppearance.MaterialComponents.Caption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rating"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@id/rating_value"
+        app:layout_constraintStart_toEndOf="@id/rating_bar"
+        app:layout_constraintTop_toTopOf="@id/rating_bar"
+        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/rating_value"
+        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/rating_bar"
+        app:layout_constraintStart_toEndOf="@id/rating_bar"
+        app:layout_constraintTop_toBottomOf="@id/rating_label"
+        tools:text="6/10" />
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer"
+        style="@style/ShimmerStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/image_view"
+        app:layout_constraintEnd_toEndOf="@id/title_text_view"
+        app:layout_constraintStart_toStartOf="@id/title_text_view"
+        app:layout_constraintTop_toBottomOf="@id/title_text_view">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View
+                android:id="@+id/description_placeholder"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/small_margin"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:background="@drawable/rect_rounded_4"
+                app:layout_constraintBottom_toTopOf="@id/rating_bar_placeholder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RatingBar
+                android:id="@+id/rating_bar_placeholder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="1"
+                android:progressTint="@color/placeholder"
+                android:rating="1"
+                android:secondaryProgressTint="@color/transparent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <View
+                android:id="@+id/rating_label_placeholder"
+                android:layout_width="60dp"
+                android:layout_height="14dp"
+                android:background="@drawable/rect_rounded_4"
+                app:layout_constraintBottom_toTopOf="@id/rating_value_placeholder"
+                app:layout_constraintStart_toEndOf="@id/rating_bar_placeholder"
+                app:layout_constraintTop_toTopOf="@id/rating_bar_placeholder"
+                app:layout_constraintVertical_bias="0.2"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <View
+                android:id="@+id/rating_value_placeholder"
+                android:layout_width="74dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="@dimen/small_margin"
+                android:background="@drawable/rect_rounded_4"
+                app:layout_constraintBottom_toBottomOf="@id/rating_bar_placeholder"
+                app:layout_constraintStart_toEndOf="@id/rating_bar_placeholder"
+                app:layout_constraintTop_toBottomOf="@id/rating_label_placeholder" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

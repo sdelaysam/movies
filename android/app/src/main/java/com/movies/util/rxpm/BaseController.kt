@@ -19,19 +19,23 @@ abstract class BaseController<PM : PresentationModel>(
     bundle: Bundle? = null
 ) : PmController<PM>(bundle), LayoutContainer {
 
-    override val containerView: View?
-        get() = view
+    override var containerView: View? = null
 
     override fun providePresentationModel(): PM {
         return activity!!.application.injector.pmFactory().create(pmClass.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup, savedViewState: Bundle?): View {
-        return inflater.inflate(layoutId, container, false)
+        containerView = inflater.inflate(layoutId, container, false)
+        onViewCreated(containerView!!)
+        return containerView!!
     }
+
+    protected open fun onViewCreated(view: View) {}
 
     override fun onDestroyView(view: View) {
         super.onDestroyView(view)
         clearFindViewByIdCache()
+        containerView = null
     }
 }

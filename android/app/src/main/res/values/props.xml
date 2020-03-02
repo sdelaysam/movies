@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="tiles_span_count">2</integer>
+    <bool name="light_status_bar">true</bool>
+</resources>

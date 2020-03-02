@@ -5,16 +5,18 @@ import com.movies.api.MovieDetail
 import com.movies.data.service.ApiService
 import io.reactivex.Maybe
 import io.reactivex.Single
+import tools.rx.TestSubject
 
 class TestApiService : ApiService {
 
-    // TODO: allow to provide test data
+    val movies = TestSubject<List<Movie>>()
+    val movieDetail = TestSubject<MovieDetail>()
+
     override fun getMovies(): Single<List<Movie>> {
-        return Single.just(emptyList())
+        return movies.toSingle()
     }
 
-    // TODO: allow to provide test data
     override fun getMovieDetail(id: Long): Maybe<MovieDetail> {
-        return Maybe.empty()
+        return movieDetail.toMaybe()
     }
 }

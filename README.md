@@ -1,3 +1,7 @@
+### Sample
+
+![Day Mode](android/mode_day.gif) ![Night Mode](android/mode_night.gif)
+
 ### Prerequisites
 
 This application uses [Djinni](https://github.com/dropbox/djinni) to generate `JNI` and `Obj-C++` wrappers. Please run

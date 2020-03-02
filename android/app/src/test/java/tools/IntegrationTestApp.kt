@@ -22,4 +22,8 @@ open class IntegrationTestApp : App() {
     override fun initLogger() {
         Timber.plant(TimberPrintTree())
     }
+
+    override fun initPicasso() {
+        // on-op
+    }
 }

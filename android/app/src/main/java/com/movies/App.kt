@@ -1,11 +1,10 @@
 package com.movies
 
 import android.app.Application
-import android.util.Log
-import com.movies.api.Api
 import com.movies.di.AppModule
 import com.movies.di.DaggerAppComponent
 import com.movies.di.Injector
+import com.movies.util.picasso.PicassoUtil.initPicasso
 import timber.log.Timber
 
 open class App: Application() {
@@ -17,6 +16,7 @@ open class App: Application() {
     override fun onCreate() {
         super.onCreate()
         initLogger()
+        initPicasso()
     }
 
     override fun onTerminate() {
@@ -28,6 +28,10 @@ open class App: Application() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
+    }
+
+    protected open fun initPicasso() {
+        initPicasso(this)
     }
 }
 
